@@ -2,12 +2,14 @@
 ############## ############## ############## ############## ############## ######## #### ## #
 # total-rescan (c) daxxar ^ team pzs-ng <daxxar@daxxar.com> 
 #  - version 1.5rc2
+# total-rescan (c) TeRRaNoVA added FLAC
+#  - version 1.5rc3
 #
 
 #.########################################################################,
  # THIS SCRIPT *MUST* RUN AS ROOT, DUE TO chroot! IT CANNOT RUN WITHOUT!  #
  # (will give an error like "- Chroot failed! (Operation not permitted)") #
-#`#######################################################################´
+#`#######################################################################Â´
 
 #
 # info:
@@ -178,9 +180,13 @@ sub isscandir {
             closedir(TARGETDIR);
             return 1;
         }
+        if ($onlysort && /\.flac$/i) {
+            closedir(TARGETDIR);
+            return 1;
+        }
     }
 
-    # In case the dir is without .sfv/.zip/.mp3. :)
+    # In case the dir is without .sfv/.zip/.mp3/.flac. :)
     closedir(TARGETDIR);
     return 0;
 }
